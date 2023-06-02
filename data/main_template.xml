@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <data >
+        <record id="client_test_email_template" model="mail.template">
+            <field name="name">Client Test: Send by email</field>
+            <field name="model_id" ref="om_complaint.model_complaint_tiket"/>
+            <field name="email_from">jazfantasia@gmail.com</field>
+            <field name="email_to">${object.email}</field>
+            <field name="subject">Client Card</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <style>
+                        table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        }
+                    </style>
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear Valued Customer, 
+                        <br /><br />
+                        Thank you for using VELO Networks Services. 
+                        <br /><br />
+                        <table>
+                            <tr>
+                                <td>Ticket ID</td>
+                                <td>${object.id}</td>
+                            </tr>
+                           
+                        </table>
+                        <br /><br />
+                        For more information, please contact our 24/7 Call Center via Direct Call (021)576-1234 or e-mail to customercare@velo.co.id. 
+                        <br /><br />
+                        Thank you for your attention and cooperation. 
+                        <br /><br />
+                        If you have queries feel free to ask.
+                    </p>
+                </div>
+            
+            </field>
+
+        
+        </record>
+    </data>
+
+</odoo>

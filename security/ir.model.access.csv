@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_complaint_tiket,access.complaint.tiket,model_complaint_tiket,,1,1,1,1
+access_complaint_customer,access.complaint.customer,model_complaint_customer,,1,1,1,1
+access_complaint_report,access.complaint.report,model_complaint_report,,1,1,1,1
+access_monthly_report,access.monthly.report,model_monthly_report,,1,1,1,1
+access_report_location,access.report.location,model_report_location,,1,1,1,1
+access_reporting_location,access.reporting.location,model_reporting_location,,1,1,1,1

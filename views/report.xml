@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_complaint_tiket" model="ir.actions.act_window">
+        <field name="name">Tiket</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">complaint.tiket</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+
+<!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first report!
+            </p>
+        </field>
+    </record>
+
+    <record id="view_complaint_ticket" model="ir.ui.view">
+        <field name="name">view.complaint.ticket</field>
+        <field name="model">complaint.tiket</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>   
+                    <button name="action_notify_ticket" string="Send to Email"
+                        data-hotkey="m"
+                        type="object"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <h1># New Ticket</h1>
+                            <field name="email"/>                         
+                            <field name="ticket"/>
+                            <field name="date_and_time"/>
+                            <field name="reported" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')]}"/>
+                            <field name="name" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')],'readonly':[('name','==','M2O dari DB Customer')]}"/>
+                            <field name="service_id" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')]}"/>
+                            <field name="monthly_tarif" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')]}"/>
+                        </group>
+                        <group>
+                            <field name="is_show" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')]}"/>
+                            <field name="problem_indication" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')]}"/>
+                            <field name="support_team" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')],'readonly':[('name','==','M2O dari DB Customer')]}"/>
+                            <field name="assign" attrs = "{'invisible':[('ticket','!=','[Reported] by Customer')],'readonly':[('name','==','M2O dari DB Customer')]}"/>
+                        </group>
+
+                        <group>
+                            <field name="problem_category" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="network_segment" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="event_failure" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="circuit_id" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="cid" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="service_impact" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="problem_criticality" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="scale" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="customer_name" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="monthly_tarif" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="service_id" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="business_priority" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                        </group>
+                        <group>
+                            <h5>   </h5>
+                            <field name="severity_code" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="problem_desc" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="acknoweledge_by" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="acknoweledge_time" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="dispatch_to" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="partner_name" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                            <field name="contact_name" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}"/>
+                        </group>
+                        <group>
+                            <field name="request_by" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="maintenace_type" widget="radio" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="scheduled_date" class="notification" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="to_date" class="notification" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="notification_one" class="notification" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="notification_two" class="notification" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                        </group>
+                        <group>
+                            <field name="objective" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="support_teams" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="assign_to" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="regionals" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="pop_names" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="monthlies_tarif" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                        </group>
+                        <group>
+                            <field name="current_condition" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                            <field name="attachment" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                        </group>
+                        <group>
+                            <field name="detail_activity" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Customer" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}">
+                            <field name="cust_id" attrs = "{'invisible':[('ticket','!=','[Detected] by Monitoring')]}">
+                                <tree>
+                                    <field name="customer_name"/>
+                                    <field name="pop_name"/>
+                                    <field name="regional"/>
+                                    <field name="service_id_table"/>
+                                    <field name="product_category"/>
+                                    <field name="monthly_tarif_table"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <notebook>
+                        <page string="Customer" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}">
+                            <field name="cust_ids" attrs = "{'invisible':[('ticket','!=','[Preventive] Plain Maintenance')]}">
+                                <tree>
+                                    <field name="cust_name"/>
+                                    <field name="total_service"/>
+                                    <field name="busi_prio"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_tiket" model="ir.actions.act_window">
+        <field name="name">Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">complaint.report</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+
+    <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Create your first report!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_report_tiket_monthly" model="ir.actions.act_window">
+        <field name="name">Monthly Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">monthly.report</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+
+    <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Create your first report!
+            </p>
+        </field>
+    </record>
+
+    <record id="view_report_tiket_monthly" model="ir.ui.view">
+        <field name="name">view.complaint.ticket</field>
+        <field name="model">monthly.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="customers_names"/>
+                            <field name="period"/>
+                        </group>
+                        <group>
+                            <field name="to_selection"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Customer">
+                            <field name="cust_id">
+                                <tree>
+                                    <field name="service_location"/>
+                                    <field name="traffic"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_report_tiket_repo" model="ir.actions.act_window">
+        <field name="name">Reposition</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">reporting.location</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+
+    <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Create your first report!
+            </p>
+        </field>
+    </record>
+
+    <record id="view_report_tiket_repo" model="ir.ui.view">
+        <field name="name">view.complaint.ticket</field>
+        <field name="model">reporting.location</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="cust_name"/>
+                            <field name="period"/>
+                            <field name="to"/>
+                        </group>
+                        <group>
+                            <field name="service_id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_complaint_root"
+              name="Support Pipeline"
+              web_icon="om_hospital,static/description/icon.png"
+              sequence="10"/>
+
+    <menuitem id="menu_tiket_root"
+              name="Report"
+              parent="menu_complaint_root"
+              action="action_report_tiket"
+              sequence="10"/>
+
+    <menuitem id="daily_report1"
+              name="Daily SLA Report"
+              parent="support.menu_tiket_root"
+              sequence="1"
+              action="action_report_tiket"/>
+
+    <menuitem id="monthly_report"
+              name="Monthly SLA Report"
+              parent="support.menu_tiket_root"
+              sequence="2"
+              action="action_report_tiket_monthly"/>
+
+    <menuitem id="reposition"
+              name="Reposition"
+              parent="support.menu_tiket_root"
+              sequence="3"
+              action="action_report_tiket_repo"/>
+
+    <menuitem id="monthly_summary"
+              name="Monthly SLA Summary"
+              parent="support.menu_tiket_root"
+              sequence="4"
+              action="action_complaint_tiket"/>
+
+    <menuitem id="menu_sla_root"
+              name="SLA Focus"
+              parent="menu_complaint_root"
+              action="action_complaint_tiket"
+              sequence="9"/>
+
+    <menuitem id="menu_third_root"
+              name="Third Party"
+              parent="menu_complaint_root"
+              action="action_complaint_tiket"
+              sequence="12"/>
+
+    <menuitem id="menu_third_root_pop"
+              name="POP"
+              parent="support.menu_third_root"
+              sequence="1"
+              action="action_complaint_tiket"/>
+
+    <menuitem id="menu_third_root_partner"
+              name="Partner"
+              parent="support.menu_third_root"
+              sequence="2"
+              action="action_complaint_tiket"/>
+
+    <menuitem id="menu_customers_root"
+              name="Customers"
+              parent="menu_complaint_root"
+              action="action_complaint_tiket"
+              sequence="13"/>
+
+    <menuitem id="menu_customers_pop"
+              name="Customers by POP"
+              parent="support.menu_customers_root"
+              sequence="1"
+              action="action_complaint_tiket"/>
+
+    <menuitem id="menu_customers_industry"
+              name="Customers by Industry"
+              parent="support.menu_customers_root"
+              sequence="2"
+              action="action_complaint_tiket"/>
+
+    <menuitem id="menu_config_root"
+              name="Configuration"
+              parent="menu_complaint_root"
+              action="action_complaint_tiket"
+              sequence="14"/>
+</odoo>
